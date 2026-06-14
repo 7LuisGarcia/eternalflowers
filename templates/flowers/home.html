@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Eternal Flowers</h1>
+        <p class="lead">Handcrafted ribbon flowers designed to last forever.</p>
+
+        <a href="{% url 'flowers:collections' %}" class="btn btn-light btn-lg me-2">
+            Explore Collections
+        </a>
+
+        <a href="{% url 'flowers:order' %}" class="btn btn-outline-light btn-lg">
+            Request Custom Order
+        </a>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="section-title text-center">Why Choose Eternal Flowers?</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <h4>Handmade Ribbon Flowers</h4>
+                <p>Beautiful flowers crafted from ribbon that never wilt or fade.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <h4>Custom Bouquets</h4>
+                <p>Personalized colors, styles, and designs for every occasion.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 text-center h-100">
+                <h4>Perfect Keepsakes</h4>
+                <p>Elegant gifts for weddings, birthdays, anniversaries, and special memories.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

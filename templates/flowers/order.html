@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="section-title text-center">
+        Order Request
+    </h1>
+
+    <div class="card p-5">
+
+        <form>
+
+            <div class="mb-3">
+                <label>Customer Name</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label>Occasion</label>
+                <select class="form-control">
+                    <option>Birthday</option>
+                    <option>Wedding</option>
+                    <option>Anniversary</option>
+                    <option>Graduation</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Special Requests</label>
+                <textarea class="form-control" rows="5"></textarea>
+            </div>
+
+            <button class="btn btn-custom">
+                Submit Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
