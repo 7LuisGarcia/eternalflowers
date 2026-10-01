@@ -1,46 +1,150 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
 <div class="container py-5">
-    <h1 class="section-title text-center">Flower Collections</h1>
+    <h1 class="section-title text-center mb-4">Colecciones Florales</h1>
 
     <div class="row g-4">
 
         <div class="col-md-4">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac"
-                    class="card-img-top">
+            <div class="card h-100 shadow-sm">
+                <button
+                    type="button"
+                    class="border-0 p-0 w-100 bg-transparent"
+                    data-bs-toggle="modal"
+                    data-bs-target="#flowerModal"
+                    data-title="Colección de orquídeas"
+                    aria-label="Ampliar imagen de las orquídeas"
+                >
+                    <img
+                        src="{% static 'flowers/images/orchid.jpg' %}"
+                        class="card-img-top"
+                        alt="Orquídeas amarillas de listón hechas a mano en una maceta blanca"
+                        style="height: 350px; object-fit: contain; background-color: #f7f3ed; cursor: zoom-in;"
+                    >
+                </button>
+
                 <div class="card-body">
-                    <h5>Roses Collection</h5>
-                    <p>Classic romantic arrangements.</p>
+                    <h5 class="card-title">Colección de Orquídeas</h5>
+                    <p class="card-text">
+                        Elegantes orquídeas de listón hechas a mano
+                        para disfrutar de una belleza duradera.
+                    </p>
+                    <small class="text-muted">Haz clic en la imagen para ampliarla.</small>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa"
-                    class="card-img-top">
+            <div class="card h-100 shadow-sm">
+                <button
+                    type="button"
+                    class="border-0 p-0 w-100 bg-transparent"
+                    data-bs-toggle="modal"
+                    data-bs-target="#flowerModal"
+                    data-title="Colección de cempasúchil"
+                    aria-label="Ampliar imagen del cempasúchil"
+                >
+                    <img
+                        src="{% static 'flowers/images/cempasuchil.jpg' %}"
+                        class="card-img-top"
+                        alt="Flores anaranjadas de cempasúchil de listón en una maceta blanca"
+                        style="height: 350px; object-fit: contain; background-color: #f7f3ed; cursor: zoom-in;"
+                    >
+                </button>
+
                 <div class="card-body">
-                    <h5>Wedding Flowers</h5>
-                    <p>Elegant bridal bouquets.</p>
+                    <h5 class="card-title">Colección de Cempasúchil</h5>
+                    <p class="card-text">
+                        Flores de listón llenas de color y tradición,
+                        elaboradas a mano con dedicación.
+                    </p>
+                    <small class="text-muted">Haz clic en la imagen para ampliarla.</small>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df"
-                    class="card-img-top">
+            <div class="card h-100 shadow-sm">
+                <button
+                    type="button"
+                    class="border-0 p-0 w-100 bg-transparent"
+                    data-bs-toggle="modal"
+                    data-bs-target="#flowerModal"
+                    data-title="Colección de lujo"
+                    aria-label="Ampliar imagen del arreglo de lujo"
+                >
+                    <img
+                        src="{% static 'flowers/images/gladys.jpg' %}"
+                        class="card-img-top"
+                        alt="Arreglo de flores de listón multicolores en un florero rojo"
+                        style="height: 350px; object-fit: contain; background-color: #f7f3ed; cursor: zoom-in;"
+                    >
+                </button>
+
                 <div class="card-body">
-                    <h5>Luxury Collection</h5>
-                    <p>Premium floral designs.</p>
+                    <h5 class="card-title">Colección de Gladiolas</h5>
+                    <p class="card-text">Diseños florales exclusivos.</p>
+                    <small class="text-muted">Haz clic en la imagen para ampliarla.</small>
                 </div>
             </div>
         </div>
 
     </div>
 </div>
+
+<!-- Ventana para mostrar la imagen ampliada -->
+<div
+    class="modal fade"
+    id="flowerModal"
+    tabindex="-1"
+    aria-labelledby="flowerModalTitle"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="flowerModalTitle">
+                    Imagen ampliada
+                </h2>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Cerrar"
+                ></button>
+            </div>
+
+            <div class="modal-body text-center" style="background-color: #f7f3ed;">
+                <img
+                    id="flowerModalImage"
+                    alt=""
+                    style="display: block; width: 100%; max-height: 75vh; object-fit: contain;"
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const flowerModal = document.getElementById('flowerModal');
+
+    flowerModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+
+        if (!button) return;
+
+        const thumbnail = button.querySelector('img');
+        const enlargedImage = document.getElementById('flowerModalImage');
+
+        enlargedImage.src = thumbnail.src;
+        enlargedImage.alt = thumbnail.alt;
+
+        document.getElementById('flowerModalTitle').textContent =
+            button.dataset.title;
+    });
+</script>
 
 {% endblock %}
